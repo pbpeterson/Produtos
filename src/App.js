@@ -9,15 +9,17 @@ import Produto from './Produto';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="" element={<Home />} />
-        <Route path="*" element={<Notfound />} />
-        <Route path="produto/:id" element={<Produto />} />
-        <Route path="contato" element={<Contato />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="container">
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="" element={<Home />} />
+          <Route path="*" element={<Notfound />} />
+          <Route path="produto/:id" element={<Produto />} />
+          <Route path="contato" element={<Contato />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

@@ -2,21 +2,27 @@ import React from 'react';
 import { useParams } from 'react-router';
 
 const Produto = () => {
-  const params = useParams();
+  const { id } = useParams();
   const [produto, setProduto] = React.useState(null);
+  const [carregando, setCarregando] = React.useState(false);
 
   React.useEffect(() => {
-    fetch(`https://ranekapi.origamid.dev/json/api/produto/${params.id}`)
-      .then((response) => response.json())
-      .then((json) => setProduto(json));
-  }, [params.id]);
+    async function fetchProduto(url) {
+      setCarregando(true);
+      const response = await fetch(url);
+      const json = await response.json();
+      setProduto(json);
+      setCarregando(false);
+    }
+    fetchProduto(`https://ranekapi.origamid.dev/json/api/produto/${id}`);
+  }, [id]);
 
-  console.log(produto);
+  if (carregando === true) return <div className="carregando"></div>;
 
   if (produto === null) return null;
 
   return (
-    <section className="container animar">
+    <section className="animar">
       <div className="produtoEsp">
         <img src={produto.fotos[0].src} alt={produto.id} />
         <div className="infos">
