@@ -1,9 +1,11 @@
 import React from 'react';
 import foto from '../src/img/contato.jpg';
+import Head from './Head';
 
 const Contato = () => {
   return (
     <div className="container produtoEsp animar">
+      <Head title="Contato" description="Entre em contato" />
       <img src={foto} alt="contatoImg" />
       <div className="infos">
         <h1>Entre em contato</h1>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router';
+import Head from './Head';
 
 const Produto = () => {
   const { id } = useParams();
@@ -23,6 +24,11 @@ const Produto = () => {
 
   return (
     <section className="animar">
+      <Head
+        title={`Produto: ${produto.nome}`}
+        description={`Este é o mais novo ${produto.nome}`}
+      />
+
       <div className="produtoEsp">
         <img src={produto.fotos[0].src} alt={produto.id} />
         <div className="infos">
